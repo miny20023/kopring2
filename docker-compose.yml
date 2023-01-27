@@ -1,0 +1,39 @@
+#version: "3.1"
+#
+#services:
+#  sample:
+#    container_name: sample
+#    image: miny20023/sample:latest
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
+#
+#      # DB
+#      - DB_URL=${DB_URL}
+#      - DB_NAME=${DB_NAME}
+#      - DB_USERNAME=${DB_USERNAME}
+#      - DB_PASSWORD=${DB_PASSWORD}
+#
+#    ports:
+#      - "8080:8080"
+
+version: '3.8'
+services:
+  spring-app:
+    image: miny20023/sample:0.0.1
+    build: .
+    ports:
+      - "8080:8080"
+#    depends_on:
+#      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://13.209.228.191:5432/testtable
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=12341234
+#  db:
+#    image: postgres
+#    environment:
+#      - POSTGRES_USER=myuser
+#      - POSTGRES_PASSWORD=mypassword
+#      - POSTGRES_DB=mydb
+#    ports:
+#      - "5432:5432"
